@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="/Users/apple/Downloads/git/Project/BE/Ecommerce-Backend"/>
 			<item value="C:\Users\admin\OneDrive\Desktop\Ecommerce-Backend"/>
 		</list>
 		<list key="projectNameTemplate">

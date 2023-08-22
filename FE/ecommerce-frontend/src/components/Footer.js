@@ -63,7 +63,7 @@ function MyFooter() {
           </div>
           <div className=" mt-2 ">
             <PhoneIcon></PhoneIcon>
-            Phone : 09284951392
+            Phone : 8830573744
           </div>
 
           <div
