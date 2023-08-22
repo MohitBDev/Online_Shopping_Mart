@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin@123
+      MYSQL_DATABASE: osm
+      MYSQL_USER: root
+      MYSQL_PASSWORD: admin@123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./Ecommerce-Backend # Path to your Spring Boot app's Dockerfile directory
+    image: spring
+    container_name: spring
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/your-database
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin@123
+    ports:
+      - "9096:9096"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:
