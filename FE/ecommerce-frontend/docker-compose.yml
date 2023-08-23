@@ -1,0 +1,34 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: mohitdev26/react-app # Path to your React app's Dockerfile directory
+    ports:
+      - "3000:3000"
+
+  backend:
+    build:
+      context: mohitdev26/spring # Path to your Spring Boot app's Dockerfile directory
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/osm?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin@123
+    ports:
+      - "9096:9096"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: admin@123
+      MYSQL_DATABASE: osm
+      MYSQL_USER: root
+      MYSQL_PASSWORD: admin@123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
