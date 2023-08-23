@@ -2,13 +2,13 @@ version: '3'
 services:
   frontend:
     build:
-      context: ./mohitdev26/react-app # Path to your React app's Dockerfile directory
+      context: ./react-app # Path to your React app's Dockerfile directory
     ports:
       - "3000:3000"
 
   backend:
     build:
-      context: ./mohitdev26/spring # Path to your Spring Boot app's Dockerfile directory
+      context: ./spring # Path to your Spring Boot app's Dockerfile directory
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/osm?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
