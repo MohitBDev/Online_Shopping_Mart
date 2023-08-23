@@ -17,11 +17,11 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the compiled JAR file from the builder stage
-COPY ./target/Ecommerce-Backend-0.0.1-SNAPSHOT.jar Ecommerce-Backend-0.0.1-SNAPSHOT.jar
+COPY  ./app/target/Ecommerce-Backend-0.0.1-SNAPSHOT.jar Ecommerce-Backend-0.0.1-SNAPSHOT.jar
 
 # Expose the port that the Spring Boot app listens on
 EXPOSE 9096
 
 # Run the Spring Boot application
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "Ecommerce-Backend-0.0.1-SNAPSHOT.jar"]
 
