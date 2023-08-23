@@ -15,11 +15,11 @@ services:
 
   backend:
     build:
-      context: ./Ecommerce-Backend # Path to your Spring Boot app's Dockerfile directory
+      context: ./Online_Shopping_Mart/BE/Ecommerce-Backend # Path to your Spring Boot app's Dockerfile directory
     image: spring
     container_name: spring
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/your-database
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/osm?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: admin@123
     ports:
