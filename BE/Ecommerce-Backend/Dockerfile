@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Build the backend application using Maven
+RUN mvn clean install -f /app/Ecommerce-Backend-0.0.1-SNAPSHOT.jar
 
 
 # Use a lightweight OpenJDK base image for the runtime image
@@ -17,7 +18,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the compiled JAR file from the builder stage
-COPY  /target/Ecommerce-Backend-0.0.1-SNAPSHOT.jar Ecommerce-Backend-0.0.1-SNAPSHOT.jar
+COPY target/Ecommerce-Backend-0.0.1-SNAPSHOT.jar  /app/Ecommerce-Backend-0.0.1-SNAPSHOT.jar
 
 # Expose the port that the Spring Boot app listens on
 EXPOSE 9096
