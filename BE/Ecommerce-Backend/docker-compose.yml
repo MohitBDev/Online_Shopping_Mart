@@ -6,7 +6,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin@123
       MYSQL_DATABASE: osm
-      MYSQL_USER: root
       MYSQL_PASSWORD: admin@123
     ports:
       - "3306:3306"
@@ -15,7 +14,7 @@ services:
 
   backend:
     build:
-      context: ./Online_Shopping_Mart/BE/Ecommerce-Backend # Path to your Spring Boot app's Dockerfile directory
+      context: ./Online_Shopping_Mart/BE/Ecommerce-Backend  # Path to your Spring Boot app's Dockerfile directory
     image: spring
     container_name: spring
     environment:
