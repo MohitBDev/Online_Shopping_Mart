@@ -2,13 +2,13 @@ version: '3'
 services:
   frontend:
     build:
-      context: ./react-app # Path to your React app's Dockerfile directory
+      context: /home/ubuntu/Online_Shopping_Mart/FE/ecommerce-frontend # Path to your React app's Dockerfile directory
     ports:
       - "3000:3000"
 
   backend:
     build:
-      context: ./spring # Path to your Spring Boot app's Dockerfile directory
+      context: /home/ubuntu/Online_Shopping_Mart/BE/Ecommerce-Backend # Path to your Spring Boot app's Dockerfile directory
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/osm?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
@@ -23,7 +23,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin@123
       MYSQL_DATABASE: osm
-      MYSQL_USER: root
       MYSQL_PASSWORD: admin@123
     ports:
       - "3306:3306"
