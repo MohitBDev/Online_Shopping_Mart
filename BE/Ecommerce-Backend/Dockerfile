@@ -8,7 +8,10 @@ WORKDIR /app
 COPY . .
 
 # Build the backend application using Maven
-RUN mvn clean install -f /app/Ecommerce-Backend-0.0.1-SNAPSHOT.jar
+RUN sudo apt update 
+RUN sudo apt install maven
+
+RUN mvn clean install -DskipTests
 
 
 # Use a lightweight OpenJDK base image for the runtime image
