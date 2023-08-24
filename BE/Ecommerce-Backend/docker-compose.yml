@@ -1,12 +1,11 @@
 version: '3'
 services:
   mysql:
-    image: mysql:8.0
+    image: mysql:8.0.34
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: admin@123
-      MYSQL_DATABASE: osm
-      MYSQL_PASSWORD: admin@123
+     
     ports:
       - "3306:3306"
     volumes:
