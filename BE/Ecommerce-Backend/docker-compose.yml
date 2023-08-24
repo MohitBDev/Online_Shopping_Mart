@@ -14,7 +14,7 @@ services:
 
   backend:
     build:
-      context: ./Online_Shopping_Mart/BE/Ecommerce-Backend  # Path to your Spring Boot app's Dockerfile directory
+      context: /home/ubuntu/Online_Shopping_Mart/BE/Ecommerce-Backend  # Path to your Spring Boot app's Dockerfile directory
     image: spring
     container_name: spring
     environment:
