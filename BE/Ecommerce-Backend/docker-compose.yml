@@ -24,6 +24,8 @@ services:
       SPRING_JPA_HIBERNATE_DDL-AUTO: update
       SPRING_JPA_SHOW-SQL: "true"
       SPRING_JPA_OPEN-IN-VIEW: "false"
+      LOGGING_LEVEL_ROOT: INFO
+      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: DEBUG
 
     ports:
       - "9096:9096"
