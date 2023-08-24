@@ -20,6 +20,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/osm?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: admin@123
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
     ports:
       - "9096:9096"
     depends_on:
