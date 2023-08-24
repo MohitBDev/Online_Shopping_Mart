@@ -8,8 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Build the backend application using Maven
-RUN sudo apt update 
-RUN sudo apt install maven
+
 
 RUN mvn clean install -DskipTests
 
