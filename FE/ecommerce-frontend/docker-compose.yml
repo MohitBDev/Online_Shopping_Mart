@@ -25,7 +25,7 @@ services:
       - mysql
 
   mysql:
-    image: mysql:latest
+    image: mysql:8.0.34
     environment:
       MYSQL_ROOT_PASSWORD: admin@123
      
