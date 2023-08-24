@@ -13,6 +13,12 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/osm?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: admin@123
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update
+      SPRING_JPA_SHOW-SQL: "true"
+      SPRING_JPA_OPEN-IN-VIEW: "false"
+      LOGGING_LEVEL_ROOT: INFO
+      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: DEBUG
     ports:
       - "9096:9096"
     depends_on:
@@ -22,8 +28,7 @@ services:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: admin@123
-      MYSQL_DATABASE: osm
-      MYSQL_PASSWORD: admin@123
+     
     ports:
       - "3306:3306"
     volumes:
