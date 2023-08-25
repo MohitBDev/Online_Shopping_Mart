@@ -8,6 +8,10 @@ services:
      
     ports:
       - "3306:3306"
+ networks:
+      - backend-network
+    command: 
+       --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql-data:/var/lib/mysql
 
@@ -16,6 +20,8 @@ services:
       context: /home/ubuntu/Online_Shopping_Mart/BE/Ecommerce-Backend  # Path to your Spring Boot app's Dockerfile directory
     image: spring
     container_name: spring
+networks:
+      - backend-network
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/osm?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
@@ -31,5 +37,10 @@ services:
     depends_on:
       - mysql
 
+
 volumes:
   mysql-data:
+
+networks:
+  backend-network:
+    driver: bridge
