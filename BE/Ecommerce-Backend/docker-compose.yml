@@ -27,8 +27,7 @@ services:
       LOGGING_LEVEL_ROOT: INFO
       LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: DEBUG
 
-    ports:
-      - "9096:9096"
+    
     depends_on:
       - mysql
 
