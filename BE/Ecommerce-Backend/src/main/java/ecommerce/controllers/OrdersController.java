@@ -101,7 +101,7 @@ public class OrdersController {
 		//send email
 		System.out.println(selleremail+" "+sellername+" "+qty);
 		
-		email.sendSimpleMessage(selleremail, "New Order Received", 
+		email.sendSimpleMessageAsync(selleremail, "New Order Received", 
 				"Dear "+sellername+",<br>You have been received new order from a customer"+
 		"<br>Product Name "+product.getPname()+"<br>Product Quantity "+qty);
 		
