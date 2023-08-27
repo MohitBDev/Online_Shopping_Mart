@@ -5,13 +5,16 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from Git
-                checkout scm
+                  // Checkout the source code from Git
+                checkout([$class: 'GitSCM', 
+                          branches: [[name: '*/master']],
+                          userRemoteConfigs: [[url: 'https://github.com/MohitBDev/Online_Shopping_Mart.git']]])
             }
         }
 
         stage('Build Frontend') {
             steps {
-                dir('frontend') {
+                dir('FE/ecommerce-frontend') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
@@ -20,23 +23,41 @@ pipeline {
 
         stage('Build Backend') {
             steps {
-                dir('backend') {
+                dir('BE/Ecommerce-Backend') {
                     sh './mvnw clean install'
+                }
+            }
+        }
+          
+           stage('Docker Build') {
+            steps {
+                script {
+                    // Build a Docker image for the application
+                    docker.build('my-spring-app:${env.BUILD_NUMBER}')
                 }
             }
         }
 
         stage('Deploy') {
             steps {
-                // Here you can deploy the application as per your setup
-                // This could involve copying artifacts to a server, containerization, etc.
+                 script {
+                    // Push the Docker image to a Docker registry
+                    docker.withRegistry('https://hub.docker.com', 'docker-credentials-id') {
+                        dockerImage.push("${env.BUILD_NUMBER}")
+                    }
+                }
             }
         }
     }
 
     post {
-        always {
-            // Cleanup or notification steps can go here
-        }
+    success {
+        echo 'Build succeeded!'
     }
+    failure {
+        echo 'Build failed!'
+        emailext body: 'Build failed.', subject: 'Build Failure', to: 'mohitbijwar@gmail.com'
+    }
+}
+
 }
